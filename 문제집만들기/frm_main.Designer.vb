@@ -38,6 +38,9 @@ Partial Class frm_main
         Me.cb_image = New System.Windows.Forms.CheckBox()
         Me.btn_help = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.btn_test = New System.Windows.Forms.Button()
+        Me.cb_Item = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'tb_text
@@ -92,6 +95,7 @@ Partial Class frm_main
         '
         'tb_result
         '
+        Me.tb_result.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tb_result.Enabled = False
         Me.tb_result.Location = New System.Drawing.Point(498, 250)
         Me.tb_result.Name = "tb_result"
@@ -144,7 +148,7 @@ Partial Class frm_main
         '
         'btn_setting_Save
         '
-        Me.btn_setting_Save.Location = New System.Drawing.Point(438, 75)
+        Me.btn_setting_Save.Location = New System.Drawing.Point(438, 102)
         Me.btn_setting_Save.Name = "btn_setting_Save"
         Me.btn_setting_Save.Size = New System.Drawing.Size(212, 32)
         Me.btn_setting_Save.TabIndex = 4
@@ -181,17 +185,48 @@ Partial Class frm_main
         Me.Label5.Text = "ⓒ2018 이동건" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "cyydo96@naver.com , http://sotaneum.tistory.com"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'btn_test
+        '
+        Me.btn_test.Location = New System.Drawing.Point(438, 190)
+        Me.btn_test.Name = "btn_test"
+        Me.btn_test.Size = New System.Drawing.Size(34, 37)
+        Me.btn_test.TabIndex = 6
+        Me.btn_test.Text = "test"
+        Me.btn_test.UseVisualStyleBackColor = True
+        '
+        'cb_Item
+        '
+        Me.cb_Item.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_Item.FormattingEnabled = True
+        Me.cb_Item.Items.AddRange(New Object() {"A", "1"})
+        Me.cb_Item.Location = New System.Drawing.Point(498, 75)
+        Me.cb_Item.Name = "cb_Item"
+        Me.cb_Item.Size = New System.Drawing.Size(97, 20)
+        Me.cb_Item.TabIndex = 7
+        '
+        'Label6
+        '
+        Me.Label6.Location = New System.Drawing.Point(436, 77)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(56, 18)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "문항형태"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frm_main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(667, 449)
+        Me.Controls.Add(Me.cb_Item)
+        Me.Controls.Add(Me.btn_test)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btn_setting_Save)
         Me.Controls.Add(Me.btn_help)
         Me.Controls.Add(Me.btn_Save)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cb_image)
@@ -226,4 +261,7 @@ Partial Class frm_main
     Friend WithEvents cb_image As CheckBox
     Friend WithEvents btn_help As Button
     Friend WithEvents Label5 As Label
+    Friend WithEvents btn_test As Button
+    Friend WithEvents cb_Item As ComboBox
+    Friend WithEvents Label6 As Label
 End Class

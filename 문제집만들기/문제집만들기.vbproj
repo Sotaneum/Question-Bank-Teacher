@@ -76,6 +76,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="data_convert.vb" />
     <Compile Include="data_save.vb" />
     <Compile Include="frm_main.vb">
       <SubType>Form</SubType>

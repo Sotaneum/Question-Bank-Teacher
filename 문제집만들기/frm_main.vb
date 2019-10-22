@@ -34,7 +34,11 @@
     End Sub
 
     Private Sub btn_setting_Save_Click(sender As Object, e As EventArgs) Handles btn_setting_Save.Click
-        If ds_setExam(tb_title.Text, tb_seq.Text) = 2 Then
+        If tb_title.Text = "" Or tb_seq.Text = "" Or cb_Item.Text = "" Then
+            MsgBox("내용을 모두 채워주세요!", vbOKOnly, "뭐하는 짓이여!")
+            Exit Sub
+        End If
+        If ds_setExam(tb_title.Text, tb_seq.Text, cb_Item.Text) = 2 Then
             MsgBox("새롭게 만드는 문제집이여서 새로운 폴더를 만들었습니다.", vbOKOnly, "와우! 새로운 문제집!")
         Else
             MsgBox("저장이 되었어요.. 같은 문제집에 여러개의 식별형태가 있을 경우 문제집을 읽는 프로그램에 문제가 발생합니다. 실수로 변경했다면 아직 늦지 않았고 다시 저장하면 됩니다.", vbOKOnly, "와우! 문제집!")
@@ -54,5 +58,13 @@
 
     Private Sub btn_help_Click(sender As Object, e As EventArgs) Handles btn_help.Click
         System.Diagnostics.Process.Start("http://sotaneum.tistory.com")
+    End Sub
+
+    Private Sub btn_test_Click(sender As Object, e As EventArgs) Handles btn_test.Click
+
+    End Sub
+
+    Private Sub frm_main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dc_init()
     End Sub
 End Class

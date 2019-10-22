@@ -1,42 +1,48 @@
 ﻿Imports System.IO
 Module data_save
-    Private title As String
-    Private seq As String
-    Private line As ArrayList
-    Private path As String
+    Private title As String '문제집 이름
+    Private seq As String   '문제집 구분 식별자
+    Private Question As ArrayList   '문제
+    Private QueNum As String '문제 문항 식별자
     'TEXT 데이터를 문제와 답으로 나누어 LINE에 저장한다.
+    'LIST(0) = TITLE , LIST(1) = 문항
     Private Function ds_covertData(text As String)
-        Dim data() As String = text.Split(vbCrLf)
-        Dim i As Integer = 0
+        Dim line() As String = text.Replace(vbLf, "").Split(vbCrLf)
         Dim temp As String = ""
-        line.Clear()
-        line.Add(data(0))
-        For i = 1 To data.Count - 1
-            temp += Right(data(i), data(i).Count - 1)
-            If (Not i = data.Count - 1) Then
-                temp += seq
-            End If
-        Next
-        For i = data.Count To 6
-            If (Not i = data.Count - 1) Then
-                temp += seq & "0"
+        Dim num As String = Left(QueNum, 1)
+        Dim i As Integer = 0
+        Question.Clear()
+        Do
+            temp += line(i) & " "
+            i += 1
+        Loop While (Not ucase(Left(line(i), 2)) = num & ".")
+        Question.Add(temp)
+        temp = ""
+        temp += line(i)
+        num = dc_NumPlus(num)
+        For i = i + 1 To line.Count - 1
+            Dim check_list_temp As String = UCase(Left(line(i), num.Count + 1))
+            If check_list_temp = num & "." Then
+                temp += seq & line(i)
+                num = dc_NumPlus(num)
             Else
-                temp += "0"
+                temp += "\n" & line(i)
             End If
         Next
-        line.Add(temp)
+        Question.Add(temp)
         Return 0
     End Function
 
     '데이터를 파일에 추가한다.
     Private Function ds_file_save(data As String)
-        If Not File.Exists(path & "\DATA.dat") Then
-            Dim fs As FileStream = File.Create(path & "\DATA.dat")
+        Dim path As String = Application.StartupPath & "\" & title
+        If Not File.Exists(Path & "\DATA.dat") Then
+            Dim fs As FileStream = File.Create(Path & "\DATA.dat")
             fs.Close()
         Else
             data = vbCrLf & data
         End If
-        My.Computer.FileSystem.WriteAllText(path & "\DATA.dat", data, True)
+        My.Computer.FileSystem.WriteAllText(Path & "\DATA.dat", data, True)
         Return 1
     End Function
 
@@ -70,16 +76,18 @@ Module data_save
         If img = True Then
             temp = "Picture\" & num & ".png"
         End If
-        data = num & seq & line(0) & seq & result & seq & temp & seq & line(1)
+        data = num & seq & Question(0) & seq & result & seq & temp & seq & Question(1)
         Return ds_file_save(data)
     End Function
 
     '시스템을 초기화한다.(data_save에 한해)
-    Public Function ds_setExam(g_title As String, g_seq As String)
+    Public Function ds_setExam(g_title As String, g_seq As String, g_quenum As String)
+        Dim path As String
         path = Application.StartupPath
         title = g_title
         seq = g_seq
-        line = New ArrayList()
+        QueNum = g_quenum
+        Question = New ArrayList()
         path += "\" & title
         Return ds_MakeDirectory(path & "\" & "Picture")
     End Function

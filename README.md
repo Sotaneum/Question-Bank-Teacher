@@ -2,7 +2,7 @@
 
 Question Bank Teacher :: 문제은행에서 문제를 만드는 프로그램입니다.
 
-![cover](./assets/cover.png)
+![cover](./assets/cover1.png)
 
 ## Download
 

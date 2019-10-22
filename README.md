@@ -12,7 +12,7 @@ Question Bank Teacher :: 문제은행에서 문제를 만드는 프로그램입�
 ## Info
 
 - `문제를 풀어보기 위한 문제`를 만드는 프로그램입니다. 이 프로그램은 `문제은행(Question-Bank)` 프로젝트의 일부입니다.
-- `Question-Bank`프로젝트의 `Question-Bank-Student`와 호환됩니다.
+- `Question-Bank`프로젝트의 [`Question-Bank-Student`](https://github.com/Sotaneum/Question-Bank-Student)와 호환됩니다.
 - 문제집 생성 : `문제집의 이름`을 지정하고 식별형태(문제 문항이나 답에 해당 정보가 없을 문자열)를 입력 후 저장버튼을 누르면 됩니다.
 - 문제 등록 : 좌측의 빈공간에 문제와 번호를 입력합니다. 문항은 다음과 같은 규칙이 있습니다.
 
